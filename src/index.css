@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/*
+ * CITO Surgicare design system
+ * ------------------------------------------------------------------
+ * Colour rules (corporate navy palette):
+ *  - --color-navy      .. primary navy: navigation, headings, brand structure
+ *  - --color-navy-dark .. dark navy: secondary headings, emphasis
+ *  - --color-soft      .. light background: #F5F7FA
+ *  - --color-white     .. white: #FFFFFF
+ *  - --color-ink       .. main text: #243447
+ *  - --color-muted     .. secondary text: #64748B
+ *  - --color-line      .. borders: #E2E8F0
+ *  - --color-wa        .. WhatsApp green: WhatsApp actions only
+ *  - --color-wa-strong .. darker WhatsApp green: WhatsApp text/buttons
+ */
+
+@theme {
+  /* Brand palette (corporate navy) */
+  --color-navy: #153653;
+  --color-navy-dark: #102A43;
+  --color-navy-light: #1D4E89;
+
+  /* Surfaces */
+  --color-soft: #F5F7FA;
+  --color-white: #FFFFFF;
+
+  /* Text */
+  --color-ink: #243447;
+  --color-muted: #64748B;
+  --color-line: #E2E8F0;
+
+  /* WhatsApp */
+  --color-wa: #25D366;
+  --color-wa-strong: #0D8342;
+  --color-wa-dark: #0A6B35;
+  --color-wa-tint: #E9F9EF;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  /* Keep anchored sections clear of the sticky header. */
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Visible, high-contrast keyboard focus indicator everywhere. */
+:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 2px;
+}
+
+/* ---------- Animation utilities ---------- */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Utility classes ---------- */
+.anim-fade-in {
+  animation: fade-in 0.7s ease-out both;
+}
+
+.anim-slide-up {
+  animation: slide-up 0.7s ease-out both;
+}
+
+/* ---------- Scrollbar styling (macOS) ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-soft);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy);
+  border-radius: 5px;
+  border: 2px solid var(--color-soft);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-navy-dark);
+}
