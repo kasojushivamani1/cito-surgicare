@@ -20,14 +20,14 @@ export default function Navbar({ active, onNavigate }) {
           className="flex items-center gap-3 text-left"
           aria-label="CITO Surgicare — go to top"
         >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-navy text-white">
-            <img
-              src="/images/cito-emblem.png"
-              alt="CITO Surgicare emblem"
-              className="h-7 w-auto object-contain"
-              style={{ width: 'auto', height: '2.5rem' }}
-            />
-          </span>
+          
+<span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-100">
+  <img
+    src="/images/logo.jpeg"
+    alt="CITO Surgicare logo"
+    className="h-full w-full rounded-full object-contain scale-125"  />
+</span>
+
           <span className="leading-tight">
             <span className="block text-[15px] font-bold tracking-tight text-navy sm:text-[17px]">
               CITO <span className="text-navy-dark">Surgicare</span>
